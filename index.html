@@ -26,6 +26,21 @@
       </div>
     </nav>
   </header>
+<!-- Floating Chatbot Widget -->
+<div id="chatWidget" class="chat-widget">
+  <div class="chat-header" onclick="toggleChatBody()">💬 Chat with us</div>
+  <div class="chat-body hidden">
+    <div class="chat-messages">
+      <p class="bot-message">Hi! 👋 How can I assist you today?</p>
+    </div>
+    <input
+      type="text"
+      id="chatInput"
+      placeholder="Type your message..."
+      onkeypress="handleChatKey(event)"
+    />
+  </div>
+</div>
 
   <!-- Main Content -->
   <main>
@@ -198,6 +213,10 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <!-- Extra UI: Dark Mode Toggle Button -->
+<button id="themeToggleBtn" class="theme-toggle" title="Toggle Light/Dark Mode">🌙</button>
+
 </body>
 </html>
 

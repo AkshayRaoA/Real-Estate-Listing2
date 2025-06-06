@@ -293,18 +293,43 @@ sortFilter.addEventListener("change", () => {
   currentPage = 1;
   filterSortPaginate();
 });
+// Toggle chat body
+function toggleChatBody() {
+  const chatBody = document.querySelector(".chat-body");
+  chatBody.classList.toggle("hidden");
+}
 
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+// Handle user input
+function handleChatKey(event) {
+  if (event.key === "Enter") {
+    const input = document.getElementById("chatInput");
+    const message = input.value.trim();
+    if (message) {
+      displayUserMessage(message);
+      displayBotMessage("Thanks for your message! 😊 (Bot reply placeholder)");
+      input.value = "";
+    }
+  }
+}
 
-  // Collect form data
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
+// Display user message
+function displayUserMessage(text) {
+  const chatMessages = document.querySelector(".chat-messages");
+  const msg = document.createElement("p");
+  msg.classList.add("user-message");
+  msg.textContent = text;
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
-  // For demonstration, we'll just display a success message
-  document.getElementById('formResponse').textContent = 'Thank you for your inquiry, ' + name + '! We will get back to you shortly.';
+// Display bot reply
+function displayBotMessage(text) {
+  const chatMessages = document.querySelector(".chat-messages");
+  const msg = document.createElement("p");
+  msg.classList.add("bot-message");
+  msg.textContent = text;
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
-  // Reset the form
-  document.getElementById('contactForm').reset();
 });
