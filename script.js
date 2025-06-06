@@ -293,4 +293,42 @@ sortFilter.addEventListener("change", () => {
   currentPage = 1;
   filterSortPaginate();
 });
+// Toggle chat body
+function toggleChatBody() {
+  const chatBody = document.querySelector(".chat-body");
+  chatBody.classList.toggle("hidden");
+}
+
+// Handle user input
+function handleChatKey(event) {
+  if (event.key === "Enter") {
+    const input = document.getElementById("chatInput");
+    const message = input.value.trim();
+    if (message) {
+      displayUserMessage(message);
+      displayBotMessage("Thanks for your message! 😊 (Bot reply placeholder)");
+      input.value = "";
+    }
+  }
+}
+
+// Display user message
+function displayUserMessage(text) {
+  const chatMessages = document.querySelector(".chat-messages");
+  const msg = document.createElement("p");
+  msg.classList.add("user-message");
+  msg.textContent = text;
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Display bot reply
+function displayBotMessage(text) {
+  const chatMessages = document.querySelector(".chat-messages");
+  const msg = document.createElement("p");
+  msg.classList.add("bot-message");
+  msg.textContent = text;
+  chatMessages.appendChild(msg);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+}
 
