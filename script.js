@@ -294,3 +294,55 @@ sortFilter.addEventListener("change", () => {
   filterSortPaginate();
 });
 
+let compareList = [];
+const compareModal = document.getElementById('compareModal');
+const compareContainer = document.getElementById('compareContainer');
+const compareClose = document.getElementById('compareClose');
+const clearCompareBtn = document.getElementById('clearCompareBtn');
+
+// Add this inside your dynamic card generator
+function addCompareButton(card, property) {
+  const compareBtn = document.createElement('button');
+  compareBtn.textContent = "Compare";
+  compareBtn.className = "favorite-btn";
+  compareBtn.onclick = () => {
+    if (compareList.length >= 3) {
+      alert("You can only compare up to 3 properties.");
+      return;
+    }
+    if (!compareList.includes(property)) {
+      compareList.push(property);
+      updateCompareModal();
+      compareModal.classList.remove("hidden");
+    }
+  };
+  card.appendChild(compareBtn);
+}
+
+function updateCompareModal() {
+  compareContainer.innerHTML = '';
+  compareList.forEach((prop) => {
+    const card = document.createElement('div');
+    card.className = 'compare-card';
+    card.innerHTML = `
+      <h4>${prop.title}</h4>
+      <ul>
+        <li><strong>Location:</strong> ${prop.location}</li>
+        <li><strong>Price:</strong> $${prop.price.toLocaleString()}</li>
+        <li><strong>Bedrooms:</strong> ${prop.bedrooms}</li>
+        <li><strong>Type:</strong> ${prop.type || 'N/A'}</li>
+      </ul>
+    `;
+    compareContainer.appendChild(card);
+  });
+}
+
+compareClose.onclick = () => {
+  compareModal.classList.add("hidden");
+};
+
+clearCompareBtn.onclick = () => {
+  compareList = [];
+  updateCompareModal();
+  compareModal.classList.add("hidden");
+};
