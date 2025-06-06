@@ -294,3 +294,17 @@ sortFilter.addEventListener("change", () => {
   filterSortPaginate();
 });
 
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  // Collect form data
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const message = document.getElementById('message').value;
+
+  // For demonstration, we'll just display a success message
+  document.getElementById('formResponse').textContent = 'Thank you for your inquiry, ' + name + '! We will get back to you shortly.';
+
+  // Reset the form
+  document.getElementById('contactForm').reset();
+});
