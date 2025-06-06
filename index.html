@@ -26,6 +26,21 @@
       </div>
     </nav>
   </header>
+<!-- Floating Chatbot Widget -->
+<div id="chatWidget" class="chat-widget">
+  <div class="chat-header" onclick="toggleChatBody()">💬 Chat with us</div>
+  <div class="chat-body hidden">
+    <div class="chat-messages">
+      <p class="bot-message">Hi! 👋 How can I assist you today?</p>
+    </div>
+    <input
+      type="text"
+      id="chatInput"
+      placeholder="Type your message..."
+      onkeypress="handleChatKey(event)"
+    />
+  </div>
+</div>
 
   <!-- Main Content -->
   <main>
@@ -92,6 +107,8 @@
         <!-- Pagination buttons injected by JS -->
       </div>
     </section>
+      <input type="text" id="searchInput" placeholder="Search properties...">
+<button onclick="searchProperties()">Search</button>
 
     <!-- Favorites Section -->
     <section id="favoritesSection" class="favorites-section">
@@ -119,6 +136,18 @@
         <button id="favoriteBtn" class="favorite-btn">Add to Favorites</button>
       </div>
     </div>
+<div class="property-card">
+  <h2 class="property-title">Cozy Apartment</h2>
+  <p class="property-location">Downtown</p>
+  <!-- Other property details -->
+</div>
+<form id="contactForm">
+  <input type="text" id="name" placeholder="Your Name" required>
+  <input type="email" id="email" placeholder="Your Email" required>
+  <textarea id="message" placeholder="Your Message" required></textarea>
+  <button type="submit">Send Inquiry</button>
+</form>
+<div id="formResponse"></div>
 
     <!-- About Section -->
     <section id="about" class="about-section">
@@ -184,6 +213,7 @@
   </footer>
 
   <script src="script.js"></script>
+
   <!-- Compare Properties Modal -->
 <div id="compareModal" class="modal hidden">
   <div class="modal-content">
@@ -195,6 +225,11 @@
     <button id="clearCompareBtn" class="favorite-btn">Clear Comparison</button>
   </div>
 </div>
+
+
+  <!-- Extra UI: Dark Mode Toggle Button -->
+<button id="themeToggleBtn" class="theme-toggle" title="Toggle Light/Dark Mode">🌙</button>
+
 
 </body>
 </html>
