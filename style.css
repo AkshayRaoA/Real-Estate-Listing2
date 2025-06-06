@@ -419,6 +419,36 @@ footer {
     display: flex;
   }
 }
+.chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 250px;
+  background-color: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: sans-serif;
+  z-index: 999;
+}
+
+.chat-header {
+  background-color: #00bfa6;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.chat-body {
+  padding: 10px;
+}
+
+.chat-body input {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid #ccc;
+  margin-top: 10px;
+}
 
 /* === Extra UI Styles: Dark Mode Toggle === */
 
